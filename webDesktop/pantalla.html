@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pantallas del sistema</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="css/style.css" />
+	
+<style type="text/css">
+	input[type=text] {
+	    width: 100%;
+	    box-sizing: border-box;
+	    border: 2px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 12px;
+	    background-color: white;
+	    background-position: 10px 10px;
+	    background-repeat: no-repeat;
+	    padding: 5px 1px 12px 1px;
+	}
+
+	input[type=numeric] {
+	    width: 100%;
+	    box-sizing: border-box;
+	    border: 2px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 12px;
+	    background-color: white;
+	    background-position: 10px 10px;
+	    background-repeat: no-repeat;
+	    padding: 5px 1px 12px 1px;
+	}
+
+
+
+	.abs_button {
+	  position: absolute !important;
+	  top: auto;
+	  left: auto;
+	  right: auto;
+	  bottom: auto;
+	}
+
+	.icon_button {
+
+	  border-radius: 5px;
+	  -moz-border-radius: 5px;
+	  -webkit-border-radius: 5px;
+	  -webkit-background-clip: padding-box;
+	  color: #fff;
+	  font-size: 11px;
+	  font-weight: bold;
+	  line-height: 1.3;
+	  padding: 6px 1px 6px;
+	  text-align: center;
+	  text-shadow: #000 0 1px 2px;
+	  width: 70px;
+	}
+
+	.icon_button.active {
+	  background: url(../images/gui/trans_black.png);
+	}
+
+	.icon_button img {
+	  background: url(../images/gui/trans_black.png) no-repeat -99999px -99999px;
+	  display: block;
+	  margin: 0 auto 5px;
+	  width: 32px;
+	  height: 32px;
+	}
+
+	.icon_button:hover {
+	  background-position: 0 0;
+	  background-repeat: repeat;
+	  border: 1px solid #fff;
+	  padding: 5px 0 5px;
+	    background: url(../images/gui/trans_white.png) no-repeat -99999px -99999px;
+	  background-color: #EFFBF8;
+	}
+
+  .boton {
+     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.3;
+    padding: 6px 1px 6px;
+    text-align: center;
+    text-shadow: #000 0 1px 2px;
+    width: 60px;
+    float: left;
+  }
+  .boton:hover {
+    background-color: whitesmoke; 
+  }
+
+  .boton img{
+    display:block;
+    margin: auto;
+  }
+
+
+	/*MODAL*/
+/* Modal para cerrar ventanas */
+
+#aceptar,#aceptar2{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        float:left;
+         margin-left:20%;
+         cursor:pointer;
+         font-weight: bold;
+         color: white;
+
+    }
+
+    #aceptar:hover, #aceptar2:hover{
+        background:black;
+    }
+
+    #cancelar{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        margin-right:20%;
+        float:right;
+        cursor:pointer;
+        font-weight: bold;
+        color: white;
+    }
+    #cancelar:hover{
+         background:black;
+
+    }
+
+
+    .modalV {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalV-content {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+
+     opacity:1;
+    width: 450px;
+        height:120px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+  .closeV {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+    cursor:pointer;
+  }
+
+  .closeV:hover { background:black; }
+</style>
+
+
+
+
+
+
+
+</head>
+<body style="margin: 0px">
+
+
+
+	  <!-- Modal cerrar ventanas información -->
+	  <div id="myModal" class="modalV">
+	      <div class="modalV-content">
+	         <a href="#close" title="Close" class="closeV" onclick="cerrarV('myModal')">X</a>
+	         <img id="iMsj" src=""/>
+	        <br />
+		    <p id="pError"></p>
+	        <br />
+	        <div id="aceptar" onclick="cerrarV('myModal')" style="margin-left:40%;">Aceptar</div>
+	      </div>
+	</div>
+	 <!-- Fin Modal cerrar informacion -->
+
+
+  <!-- Modal cerrar ventanas confirmación -->
+  <div id="myModal2" class="modalV" data-accion = "guardar">
+      <div class="modalV-content">
+         <a href="#close" title="Close" class="closeV" onclick="cerrarV('myModal2')">X</a>
+        <br />
+	    <p id="pMensaje"></p>
+        <br />
+        <div id="aceptar2">Aceptar</div>
+        <div id="cancelar" onclick="cerrarV('myModal2');">Cancelar</div>
+      </div>
+</div>
+<!-- Fin Modal cerrar confirmacion -->
+
+
+
+
+
+
+<!-- <div id="window_computer" class="abs window"> -->
+      <div class="abs window_inner">
+        <div class="abs window_content">
+          <div class="window_aside" style="padding-top: 7px; overflow: auto; height: 460px;">
+
+            <label for="idpantalla" id="lidPantalla" style="font-weight: bold;">Id Pantalla:</label>
+            <input id="idpantalla" type="numeric" readonly="true"></input>
+
+            <br>
+            <br>
+             <label for="nombre" style="font-weight: bold;">Título:</label>
+            <input id="nombre" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="descripcion" style="font-weight: bold;">Nombre:</label>
+            <input id="descripcion" type="text" maxlength="50"></input>
+
+            <br>
+            <br>
+             <label for="idDiv" style="font-weight: bold;">Identificador:</label>
+            <input id="idDiv" type="text" maxlength="100"></input>
+
+
+            <br>
+            <br>
+             <!-- <label for="ubicacion" style="font-weight: bold;">Tipo:</label>
+            <input id="ubicacion" type="text" maxlength="100"></input> -->
+            <div class="containerO">
+              <div style="font-weight: bold; width: 100px;">Menú Item:</div>
+              <div class="switch switch-blue">
+                <input type="radio" class="switch-input" name="ubicacion" value="Usi" id="Usi" checked>
+                <label for="Usi" class="switch-label switch-label-off">SI</label>
+                <input type="radio" class="switch-input" name="ubicacion" value="Uno" id="Uno" >
+                <label for="Uno" class="switch-label switch-label-on">NO</label>
+                <span class="switch-selection"></span>
+              </div>
+            </div>
+
+
+
+            <br>
+            <br>
+             <label for="ejex" style="font-weight: bold;">UbI. Eje X:</label>
+            <input id="ejex" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="ejey" style="font-weight: bold;">UbI. Eje Y:</label>
+            <input id="ejey" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="imageU" style="font-weight: bold;">Icono G:</label>
+            <input id="imageU" type="text" maxlength="100"></input>
+
+
+
+
+            <br>
+            <br>
+             <label for="imageP" style="font-weight: bold;">Icono P:</label>
+            <input id="imageP" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="cheight" style="font-weight: bold;">Height:</label>
+            <input id="cheight" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="cwidth" style="font-weight: bold;">Width:</label>
+            <input id="cwidth" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="frHeiht" style="font-weight: bold;">FRM Height:</label>
+            <input id="frHeiht" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="cLeft" style="font-weight: bold;">Left:</label>
+            <input id="cLeft" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="cTop" style="font-weight: bold;">Top:</label>
+            <input id="cTop" type="text" maxlength="100"></input>
+
+            <br>
+            <br>
+             <label for="direccion" style="font-weight: bold;">Ruta:</label>
+            <input id="direccion" type="text" maxlength="100"></input>
+            <br>
+            <br>
+
+
+            <div id="nuevoR" class="boton"><img src="./images/new.png"/>Nuevo</div>
+            <div id="guardarR" class="boton"><img src="./images/save.png"/>Guardar</div>
+
+
+          </div>
+          <div class="window_main">
+	        <div class="container_12">
+	    		<div class="grid heightsize" id= "grid">
+	    			<table class="data" id="myTable01">
+		              <thead>
+		                <tr>
+		                  <th class="shrink">
+		                    &nbsp;
+		                  </th>
+		                  <th class="shrink2">
+		                   <div id="idP" style="float: left;cursor: pointer;">Id Pantalla</div> <img id="order1" src="" style="float: left;">
+		                  </th>
+		                  <th>
+		                    <div id="nombreP" style="float: left;cursor: pointer;">Título</div> <img id="order2" src="" style="float: left;">
+		                  </th>
+                      <th>
+                        <div style="float: left;">Nombre</div> 
+                      </th>
+                      <th>
+                        <div style="float: left;">Tipo</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">Ubicación</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">UbI. Eje X</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">UbI. Eje Y</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">Icono G</div>
+                      </th>
+
+                       <th>
+                        <div style="float: left;">Icono P</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">height</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">Width</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">Frm. Height</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">P. Left</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">P. Top</div>
+                      </th>
+                       <th>
+                        <div style="float: left;">Ruta</div>
+                      </th>
+		                </tr>
+		              </thead>
+		               <tbody id="rowContent">
+		              </tbody> 
+		            </table>
+	    		</div>
+    		</div>
+        </div>
+      
+      </div>
+		 <div class="abs window_bottom">
+		          Pantallas del Sistema
+        </div>
+   <!--  </div> -->
+
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/jquery.fixedheadertable.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/pantalla.js"></script>
+
+ 	  
+</body>
+</html>

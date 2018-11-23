@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="SAC Sistemas Auxiliares Coopecaja" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>SAC Sistemas Auxiliares Coopecaja</title>
+     <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/desktop.css" />
+     <link href="css/jquery.datepick.css" rel="stylesheet">
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/jquery.desktop.js"></script>
+    <script src="js/escritorio.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/jquery.datepick.js"></script>
+    <script>
+    	
+         $(document).ready(function () {
+         	$(function() {
+			    $('#fechaI').datepick();
+			    $('#fechaF').datepick();
+			  });
+         	var estado = 0;
+         	var estLeftBar = 0;
+         	 validarSesionP();
+             $("#sideLine").mouseenter(function () {
+                 $("#sEstado").attr("value", "visible");
+                 $("#LeftBar").animate({
+                     left: '0%',
+                     backgroundColor: '#06c'
+                 });
+             });
+
+             $(".LeftBar").mouseleave(function () {
+                 //console.log("no");
+                 $("#sEstado").attr("value", "oculto");
+                 $("#LeftBar").animate({
+                     left: '100%',
+                     backgroundColor: 'transparent'
+
+                 }); 
+                   
+                 
+             });
+             
+			$("#bNoty").click(function(){
+			   if($('#divBuscar').css('display') == 'none'){ 
+				   $('#divBuscar').show('slow'); 
+				} else { 
+				   $('#divBuscar').hide('slow'); 
+				}
+			});
+
+			$("#notify").click(function(){
+			    $("#notybar").fadeToggle("slow");
+			    if (estado == 0){
+			    	cargarRegistrosNotifica('','');
+			    	estado = 1;
+			    }else{
+			    	estado = 0;
+			    }
+			});
+			$("#buscar").click(function(){
+			   if(new Date($("#fechaI").val() + " 00:00:00") == "Invalid Date" ){
+					return
+				}
+				if(new Date($("#fechaF").val() + " 23:59:59") == "Invalid Date" ){
+					return
+				}
+				 var fechai = $("#fechaI").val() + " 00:00:00";
+				 var fechaf = $("#fechaF").val() + " 23:59:59";
+				cargarRegistrosNotifica(fechai,fechaf);
+				 $('#divBuscar').hide('slow'); 
+			});
+
+         });
+	</script>
+</head>
+<body>
+
+	  <!-- Modal cerrar ventanas formularios -->
+	  <div id="myModal" class="modal">
+	      <div class="modal-content">
+	         <a href="#close" title="Close" class="close" onclick="cerrarV()">X</a>
+	        <br />
+		    <p>¿Desea cerrar el formulario?</p>
+	        <br />
+	        <div id="yes">Aceptar</div>
+	        <div id="cancel" onclick="cerrarV();">Cancelar</div>
+	      </div>
+	</div>
+	  <!-- Fin Modal cerrar ventanas -->
+
+
+		  <!-- Modal cerrar sesión -->
+	  <div id="myModal2" class="modal">
+	      <div class="modal-content">
+	         <a href="#close" title="Close" class="close" onclick="cerrarV2()">X</a>
+	        <br />
+		    <p>¿Desea cerrar la sesión?</p>
+	        <br />
+	        <div id="yes" onclick="cerrarSesion();">Aceptar</div>
+	        <div id="cancel" onclick="cerrarV2();">Cancelar</div>
+	      </div>
+	</div>
+	  <!-- Fin Modal cerrar ventanas -->  
+
+	<!-- Modal para mostrar los detalles de las notificaciones -->
+    <div id="myModalNoty" class="modalM">
+        <div class="modalM-content">
+           <a href="#close" title="Close" class="close" onclick="cerrarVentana('myModalNoty')">X</a>
+           
+          <br />
+        <p id="pMensNoty"></p>
+          <br />
+          
+        </div>
+  </div>
+   <!-- Fin Modal para mostrar los detalles de las notificaciones -->  
+
+	<input type="hidden" name="sEstado" id="sEstado" value="oculto"/>     
+	<div class="abs" id="wrapper">
+
+	  <div class="abs" id="desktop">
+	  	<div class="noty_bar" id="notybar" style="display:none;">
+	        <div style="padding-left:15px;padding-top:15px;font-size:18px; width:130px; overflow:hidden;display: inline-block;"> Notificaciones </div> <img src="images/search.png" id="bNoty" style="overflow:hidden;display: inline-block;vertical-align:top; cursor:pointer; padding-top:7px;"/>
+	        <div style="width:380px;height:0; margin:10px; border-top:solid; border-width:2px;"></div>
+	        <div id="divBuscar" style="display:none;"> 
+		        <div style="padding:10px;">
+			        <label for="fechaI" style="font-weight: bold;">Fecha Inicio:&nbsp;&nbsp;&nbsp;</label>
+		            <input id="fechaI" type="text" maxlength="50"></input>
+		            <br>
+		            <br>
+		            <label for="fechaF" style="font-weight: bold;">Fecha Final:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		            <input id="fechaF" type="text" maxlength="50"></input>
+		            <br>
+		            <br>
+		             <div id="buscar">Buscar</div>
+	             </div>
+	        	 <div style="width:380px;height:0; margin:10px; border-top:solid; border-width:2px;"></div>
+	        </div>
+	        <div id="table_Container" style="width:100%; height:500px; overflow: auto; "></div>
+	    </div>
+	     <div class="left_bar LeftBar" id="LeftBar" style="left: 100%;">
+	             <a class="abs icon2" id="salir" style="right:50px;top:87%; cursor:pointer" class="LeftBar" onclick=" mostrarV2();" >
+	                <img src="images/icons/close.png" style="cursor:pointer" onclick=" mostrarV2();" />
+	                Salir
+	            </a>
+	     </div>
+	  </div>
+	  <!-- <div class="abs" id="bar_top">
+	     <span runat="server" class="float_right" id="spanUsuario"> </span>
+	    <ul>
+	      <li>
+	        <a class="menu_trigger" href="#">Utilidades</a>
+	        <ul class="menu">
+	          <li>
+	            <a href="http://jqueryenlightenment.com/">jQuery Enlightenment</a>
+	          </li>
+	        </ul>
+	      </li>
+	      <li>
+	        <a class="menu_trigger" href="#">Otros</a>
+	        <ul class="menu">
+	          <li>
+	            <a href="http://diveintohtml5.info/">Dive Into HTML5</a>
+	          </li>
+	        </ul>
+	      </li>
+	      <li>
+	    </ul>
+	  </div> -->
+	  <div id="sideLine"></div>
+
+
+	  <div class="abs" id="bar_bottom">
+	  	
+	    <a class="float_left" href="#" id="show_desktop" title="Ocultar Todos" onclick="_winHandler.OcultarT();" >
+	      <img src="images/icons/icon_22_desktop.png" />
+	    </a>
+	    <div id="nombreUsuario" style="float:right;color:white">CARLOS FONSECA</div>
+	     <a class="float_right" href="#" id="notify" title="Notificaciones" >
+	      <img src="images/icons/process.png" />
+	    </a>
+	  </div>
+	</div>
+	<script>
+	    !window.jQuery && document.write(unescape('%3Cscript src="js/jquery.js"%3E%3C/script%3E'));
+	    !window.jQuery && document.write(unescape('%3Cscript src="js/jquery.ui.js"%3E%3C/script%3E'));
+	</script>
+</body>
+</html>

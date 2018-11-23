@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <style type="text/css">
+  /*MODAL*/
+/* Modal para cerrar ventanas */
+
+#aceptar,#aceptar2,#enviar{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        float:left;
+         margin-left:20%;
+         cursor:pointer;
+         font-weight: bold;
+         color: white;
+
+    }
+
+    #aceptar:hover, #aceptar2:hover, #enviar:hover{
+        background:black;
+    }
+
+    #cancelar{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        margin-right:20%;
+        float:right;
+        cursor:pointer;
+        font-weight: bold;
+        color: white;
+    }
+    #cancelar:hover{
+         background:black;
+
+    }
+
+
+    .modalV {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalV-content {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    opacity:1;
+    width: 650px;
+    height:500px;
+    position: relative;
+    margin: 1% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+  .closeV {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+    cursor:pointer;
+  }
+
+  .closeV:hover { background:black; }
+</style>
+
+
+</head>
+<body>
+
+    <!-- Modal cerrar ventanas información -->
+    <div id="myModal" class="modalV">
+        <div class="modalV-content">
+           <a href="#close" title="Close" class="closeV" onclick="cerrarV('myModal')">X</a>
+           <img id="iMsj" src=""/>
+          <br />
+        <p id="pError">sdsdf sdfsd sdfsd sdfsdf </p>
+          <br />
+
+          <div style="background-color:white; width:650px; height: 350px; overflow: auto;">
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+            <p>ssdfgs sdfgsdf sdfgsdfg s</p>
+
+          </div>
+          <br/>
+          <input type="text" style="width: 650px;"></input>
+          <br/>
+          <div id="enviar"  style="margin-left:20%;">Enviar</div>
+          <div id="aceptar" onclick="cerrarV('myModal')" style="margin-left:20%;">Salir</div>
+          
+
+        </div>
+  </div>
+
+  <input type="button" onclick="mostrarV('myModal')">
+
+   <!-- Fin Modal cerrar informacion -->
+
+   <script type="text/javascript">
+     function cerrarV(id) {
+        var modal = document.getElementById(id);
+        modal.style.display = "none";
+    }
+
+    function mostrarV(id){
+      var modal = document.getElementById(id); 
+      modal.style.display = "block";
+  }
+
+   </script>
+
+
+</body>
+</html>

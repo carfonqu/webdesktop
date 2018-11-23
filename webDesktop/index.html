@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    
+      <title>Ingreso Sistemas Auxiliares Coopecaja</title> 
+   
+        <link rel="stylesheet" href="css/desktop.css">
+        <style type="text/css">
+        	body {
+			  background-color: #000066;
+			  background-image: url("images/misc/wallpaper3.jpg");
+			  font-family: Arial;
+			}
+
+		input[type="text"],
+		input[type="password"] {
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			-ms-border-radius: 3px;
+			-o-border-radius: 3px;
+			border-radius: 3px;
+			-webkit-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+			-moz-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+			-ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+			-o-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+			box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			-ms-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+			transition: all 0.5s ease;
+			border: 1px solid #c8c8c8;
+			color: #777;
+			font: 13px Helvetica, Arial, sans-serif;
+			margin: 0 0 10px;
+			
+		}	
+
+
+
+		input[type="text"]:focus,
+		input[type="password"]:focus {
+			-webkit-box-shadow: 0 0 2px #ed1c24 inset;
+			-moz-box-shadow: 0 0 2px #ed1c24 inset;
+			-ms-box-shadow: 0 0 2px #ed1c24 inset;
+			-o-box-shadow: 0 0 2px #ed1c24 inset;
+			box-shadow: 0 0 2px #ed1c24 inset;
+			background-color: #fff;
+			border: 1px solid #ed1c24;
+			outline: none;
+		}
+
+        </style>
+  
+  </head>
+
+  <body>
+  		
+  		 <div style="overflow: hidden;width: 350px;height: 80px;margin: 0px auto;"><img src="images/LogoCompania.png" style="width: 350px;height: 80px;"></div> 
+		<table class="login_table">
+		<tr>
+		
+		<td><input type="text" name="username" id="username" placeholder="Usuario del sistema" style="background-image:url(/images/icons/userP.png);padding: 15px 10px 15px 40px;"></td>
+		</tr>
+		<tr>
+		
+		<td><input type="password" name="password" id="password" placeholder="password" style="background-image:url(/images/icons/lock.png);padding: 15px 10px 15px 40px;"></td>
+		</tr>
+		<tr>
+		
+		<td><input type="checkbox" id="active" name="tipoA" value="active" checked>Usar datos de active directory</td>
+		</tr>
+		<tr>
+		
+		<td id="error" style="color: red"></td>
+		</tr>
+		<tr>
+		
+		<td id="correcto" style="color: darkblue"></td>
+		</tr>
+		<tr>
+		
+		<td style="align-content: center;"><div class="btnLogin" id="btnIngreso">Ingresar</div></td>
+		</tr>
+
+		<tr id="n1" style="display: none">
+		
+		<td><input type="password" name="password2" id="password2" placeholder="Digite la nueva contraseña" style="background-image:url(/images/icons/lock.png);padding: 15px 10px 15px 40px;"></td>
+		</tr>
+		<tr id="n2" style="display: none">
+		
+		<td><input type="password" name="password3" id="password3" placeholder="Digite nuevamente la contraseña" style="background-image:url(/images/icons/lock.png);padding: 15px 10px 15px 40px;"></td>
+		</tr>
+		<tr id="n3">
+		
+		<td id="error2" style="color: red"></td>
+		</tr>
+		<tr>
+		<tr id="n4" style="display: none">
+		
+		<td style="align-content: center;"><div class="btnLogin" id="btnCambiar">Cambiar</div></td>
+		</tr>
+		</table>
+
+
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    	 <script src="js/global.js"></script>
+    	 <script src="js/login.js"></script>
+
+    
+    
+    
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+	<!-- <style type="text/css">
+		
+		@keyframes show {
+		    0% {
+		        display: none;
+		        opacity: 0;
+		    }
+		    1% {
+		        display: block;
+		    }
+		    100% {
+		        display: block;
+		        opacity: 1;
+		    }
+		}
+		@keyframes hide {
+		    0% {
+		        display: block;
+		        opacity: 1;
+		    }
+		    99% {
+		        display: block;
+		    }
+		    100% {
+		        display: none;
+		        opacity: 0;
+		    }
+		}
+		.element, .element-css {
+		    animation: show 500ms linear;
+		    animation-fill-mode: forwards;
+		}
+		.hide, .element-css:hover {
+		    animation: hide 500ms linear;
+		    animation-fill-mode: forwards;
+		}
+
+
+		
+		.element {
+		    padding: 20px;
+		}
+		.element-css {
+		    padding: 20px;
+		    background: #FF5235;
+		    border-radius: 10px;
+		    font-weight: bold;
+		    color: #fff;
+		}
+
+
+	</style> -->
+
+	<style type="text/css">
+		div {
+		    width: 1px;
+		    height: 540px;
+		    background: yellow;
+		    float: right;
+		  }
+		  p {
+		    margin: 0;
+		    margin-left: 10px;
+		    color: red;
+		    width: 220px;
+		    height: 120px;
+		    padding-top: 70px;
+		    float: left;
+		    font-size: 14px;
+		  }
+		  span {
+		    display: block;
+		  }
+		  body {
+			  margin: 0;
+			  padding: 0;
+			  overflow-x: hidden;
+			}
+
+
+	</style>
+
+
+
+</head>
+<body>
+<!-- 	<h1>Using JavaScript to add/remove "hide" class</h1>
+	<button class="element" >Click to hide (and reappear in 2 secs)</button>
+
+	
+
+	<button id="ejemplo">asdfasdfa</button>
+
+	<script type="text/javascript">
+		var el = document.querySelector('.element');
+		var al = document.querySelector('#ejemplo');
+		//el.addEventListener('click', hide);
+		al.addEventListener('click', hide);
+
+		function hide() {
+		    // el.classList.add('hide');
+		    // setTimeout(function () {
+		    //     el.classList.remove('hide');
+		    // }, 2000);
+
+		    el.className += ' hide';
+
+
+		}	
+	</script> -->
+
+
+	<p>
+	  <span>Move the mouse over the div.</span>
+	  <span>&nbsp;</span>
+	  <span id="wid">&nbsp;</span>
+	</p>
+	<div id='ej'></div>
+	<div></div>>
+
+
+	<script>
+		// $( "div" ).mousemove(function( event ) {
+		//   var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
+		//   var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
+		//   //var pagewidth = screen.width;
+		//   var pagewidth =  $( "#ej" ).width();
+		//   $( "span:first" ).text( "( event.pageX, event.pageY ) : " + pageCoords );
+		//   $( "span:last" ).text( "( event.clientX, event.clientY ) : " + clientCoords );
+		//    $( "#wid" ).text( "( pageWidth ) : " + pagewidth );
+
+
+		// });
+		$("div").mouseenter(function () {
+                alert("insertado");
+             });
+	</script>
+</body>
+</html>

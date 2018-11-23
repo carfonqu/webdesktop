@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta http-equiv="robots" content="noindex" />
+<title>Unsupported Browser</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+         function acceder(){
+      //    	 var complexObject = {
+		    //     FirstName: 'Saroj',
+		    //     LastName: 'K',
+		    //     //Orders : orders
+		    //     Orders: [{ OrderId: 1, OrderBy: 'Saroj' }, { OrderId: 2, OrderBy: 'Kumar' }]
+		    // };
+
+		    // var obj = { customer: complexObject };
+		    // var data2send = JSON.stringify(obj);
+
+
+
+         	 $.ajax({
+			        type: "POST",
+			        //url: "http://172.16.7.4/wcfDesktop/WDService.svc/prueba",
+			        url: "http://cgonzalez7684-001-site4.ctempurl.com/wcfDesktop/WDService.svc/prueba",
+			        data:JSON.stringify({ p:{id:1, nombre: 'carlos'}}),
+			         crossDomain: true,
+			        contentType: "application/json; charset=utf-8",
+			        dataType: "JSON",
+			        success: function (msg) {
+			           console.log(msg);
+			        },
+			        error: function (e) {
+			             respuesta = 0;
+			             console.log('sdfsdfsdfsdfsdfs');
+			             console.log(e);
+			        }
+			    });
+         }
+	</script>
+
+
+
+
+
+</head>
+<body>
+
+<div style="height: 20px;width: 50px; background-color: red;" onclick="acceder();">asdfasd</div>
+</body>
+</html>

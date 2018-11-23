@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Roles de Usuario</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="css/style.css" />
+	
+<style type="text/css">
+	input[type=text] {
+	    width: 100%;
+	    box-sizing: border-box;
+	    border: 2px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 12px;
+	    background-color: white;
+	    background-position: 10px 10px;
+	    background-repeat: no-repeat;
+	    padding: 5px 1px 12px 1px;
+	}
+
+	input[type=numeric] {
+	    width: 100%;
+	    box-sizing: border-box;
+	    border: 2px solid #ccc;
+	    border-radius: 4px;
+	    font-size: 12px;
+	    background-color: white;
+	    background-position: 10px 10px;
+	    background-repeat: no-repeat;
+	    padding: 5px 1px 12px 1px;
+	}
+
+
+
+	.abs_button {
+	  position: absolute !important;
+	  top: auto;
+	  left: auto;
+	  right: auto;
+	  bottom: auto;
+	}
+
+	.icon_button {
+
+	  border-radius: 5px;
+	  -moz-border-radius: 5px;
+	  -webkit-border-radius: 5px;
+	  -webkit-background-clip: padding-box;
+	  color: #fff;
+	  font-size: 11px;
+	  font-weight: bold;
+	  line-height: 1.3;
+	  padding: 6px 1px 6px;
+	  text-align: center;
+	  text-shadow: #000 0 1px 2px;
+	  width: 70px;
+	}
+
+	.icon_button.active {
+	  background: url(../images/gui/trans_black.png);
+	}
+
+	.icon_button img {
+	  background: url(../images/gui/trans_black.png) no-repeat -99999px -99999px;
+	  display: block;
+	  margin: 0 auto 5px;
+	  width: 32px;
+	  height: 32px;
+	}
+
+	.icon_button:hover {
+	  background-position: 0 0;
+	  background-repeat: repeat;
+	  border: 1px solid #fff;
+	  padding: 5px 0 5px;
+	    background: url(../images/gui/trans_white.png) no-repeat -99999px -99999px;
+	  background-color: #EFFBF8;
+	}
+
+
+	/*MODAL*/
+/* Modal para cerrar ventanas */
+
+#aceptar,#aceptar2{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        float:left;
+         margin-left:20%;
+         cursor:pointer;
+         font-weight: bold;
+         color: white;
+
+    }
+
+    #aceptar:hover, #aceptar2:hover{
+        background:black;
+    }
+
+    #cancelar{
+        height:20px;
+        width:75px;
+        background:gray;
+        border-radius:4px;
+        text-align:center;
+        padding:5px;
+        margin-right:20%;
+        float:right;
+        cursor:pointer;
+        font-weight: bold;
+        color: white;
+    }
+    #cancelar:hover{
+         background:black;
+
+    }
+
+
+    .modalV {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalV-content {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+
+     opacity:1;
+    width: 450px;
+        height:120px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+  .closeV {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+    cursor:pointer;
+  }
+
+  .closeV:hover { background:black; }
+</style>
+
+
+
+
+
+
+
+</head>
+<body style="margin: 0px">
+
+
+
+	  <!-- Modal cerrar ventanas información -->
+	  <div id="myModal" class="modalV">
+	      <div class="modalV-content">
+	         <a href="#close" title="Close" class="closeV" onclick="cerrarV('myModal')">X</a>
+	         <img id="iMsj" src=""/>
+	        <br />
+		    <p id="pError"></p>
+	        <br />
+	        <div id="aceptar" onclick="cerrarV('myModal')" style="margin-left:40%;">Aceptar</div>
+	      </div>
+	</div>
+	 <!-- Fin Modal cerrar informacion -->
+
+
+  <!-- Modal cerrar ventanas confirmación -->
+  <div id="myModal2" class="modalV" data-accion = "guardar">
+      <div class="modalV-content">
+         <a href="#close" title="Close" class="closeV" onclick="cerrarV('myModal2')">X</a>
+        <br />
+	    <p id="pMensaje"></p>
+        <br />
+        <div id="aceptar2">Aceptar</div>
+        <div id="cancelar" onclick="cerrarV('myModal2');">Cancelar</div>
+      </div>
+</div>
+<!-- Fin Modal cerrar confirmacion -->
+
+
+
+<!-- <div id="window_computer" class="abs window"> -->
+      <div class="abs window_inner">
+        <div class="abs window_content">
+          <div class="window_aside" style="padding-top: 25px;">
+
+            <label for="idRol" id="lidRol" style="font-weight: bold;">Id Rol</label>
+            <input id="idRol" type="numeric" readonly="true"></input>
+
+            <br>
+            <br>
+             <label for="DescRol" style="font-weight: bold;">Descripción</label>
+            <input id="descRol" type="text" maxlength="50"></input>
+
+
+
+             <a class="abs_button icon_button" id="nuevoR" style="left:10px;top:170px;">
+		      <img src="./images/new.png"/>
+		      Nuevo
+		    </a>
+
+		     <a class="abs_button icon_button" id="guardarR" style="left:90px;top:170px;">
+		      <img src="./images/save.png"/>
+		      Guardar
+		    </a>
+
+
+          </div>
+          <div class="window_main">
+	        <div class="container_12">
+	    		<div class="grid heightsize" id= "grid">
+	    			<table class="data" id="myTable01">
+		              <thead>
+		                <tr>
+		                  <th class="shrink">
+		                    &nbsp;
+		                  </th>
+		                  <th class="shrink2">
+		                   <div id="id" style="float: left;cursor: pointer;">Id Rol</div> <img id="order1" src="" style="float: left;">
+		                  </th>
+		                  <th>
+		                    <div id="descripcion" style="float: left;cursor: pointer;">Descripción</div> <img id="order2" src="" style="float: left;">
+		                  </th>
+		                </tr>
+		              </thead>
+		               <tbody id="rowContent">
+		              </tbody> 
+		            </table>
+	    		</div>
+    		</div>
+        </div>
+      
+      </div>
+		 <div class="abs window_bottom">
+		          Roles de Usuario
+        </div>
+   <!--  </div> -->
+
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/jquery.fixedheadertable.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/rol.js"></script>
+
+ 	  
+</body>
+</html>
